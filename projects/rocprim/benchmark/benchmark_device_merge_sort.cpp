@@ -41,14 +41,15 @@ int main(int argc, char* argv[])
 {
     benchmark_utils::executor executor(argc, argv, 128 * benchmark_utils::MiB, 10, 5);
 
+    CREATE_BENCHMARK(int8_t)
+    CREATE_BENCHMARK(short)
     CREATE_BENCHMARK(int)
     CREATE_BENCHMARK(long long)
-    CREATE_BENCHMARK(int8_t)
-    CREATE_BENCHMARK(uint8_t)
-    CREATE_BENCHMARK(rocprim::half)
-    CREATE_BENCHMARK(short)
-    CREATE_BENCHMARK(rocprim::int128_t)
-    CREATE_BENCHMARK(rocprim::uint128_t)
+    // CREATE_BENCHMARK(uint8_t)
+    CREATE_BENCHMARK(float)
+    CREATE_BENCHMARK(double)
+    
+    // CREATE_BENCHMARK(rocprim::uint128_t)
 
     using custom_float2  = common::custom_type<float, float>;
     using custom_double2 = common::custom_type<double, double>;
@@ -64,24 +65,27 @@ int main(int argc, char* argv[])
     using huge_float2_1024       = common::custom_huge_type<1024, float, float>;
     using huge_float2_2048       = common::custom_huge_type<2048, float, float>;
 
-    CREATE_BENCHMARK(int, float)
-    CREATE_BENCHMARK(long long, double)
-    CREATE_BENCHMARK(int8_t, int8_t)
-    CREATE_BENCHMARK(uint8_t, uint8_t)
-    CREATE_BENCHMARK(rocprim::half, rocprim::half)
-    CREATE_BENCHMARK(short, short)
-    CREATE_BENCHMARK(custom_float2)
-    CREATE_BENCHMARK(huge_float2_1024)
-    CREATE_BENCHMARK(huge_float2_2048)
-    CREATE_BENCHMARK(long long, custom_double2)
-    CREATE_BENCHMARK(custom_double2, custom_double2)
-    CREATE_BENCHMARK(custom_double2, custom_double2_copy)
-    CREATE_BENCHMARK(custom_int2, custom_double2)
-    CREATE_BENCHMARK(custom_int2, custom_char_double)
-    CREATE_BENCHMARK(custom_int2, custom_char_double_copy)
-    CREATE_BENCHMARK(custom_int2, custom_longlong_double)
-    CREATE_BENCHMARK(rocprim::int128_t, rocprim::int128_t)
-    CREATE_BENCHMARK(rocprim::uint128_t, rocprim::uint128_t)
+    CREATE_BENCHMARK(custom_double2)
+    // CREATE_BENCHMARK(custom_float2)
+
+    // CREATE_BENCHMARK(int, float)
+    // CREATE_BENCHMARK(long long, double)
+    // CREATE_BENCHMARK(int8_t, int8_t)
+    // CREATE_BENCHMARK(uint8_t, uint8_t)
+    // CREATE_BENCHMARK(rocprim::half, rocprim::half)
+    // CREATE_BENCHMARK(short, short)
+    // CREATE_BENCHMARK(custom_float2)
+    // CREATE_BENCHMARK(huge_float2_1024)
+    // CREATE_BENCHMARK(huge_float2_2048)
+    // CREATE_BENCHMARK(long long, custom_double2)
+    // CREATE_BENCHMARK(custom_double2, custom_double2)
+    // CREATE_BENCHMARK(custom_double2, custom_double2_copy)
+    // CREATE_BENCHMARK(custom_int2, custom_double2)
+    // CREATE_BENCHMARK(custom_int2, custom_char_double)
+    // CREATE_BENCHMARK(custom_int2, custom_char_double_copy)
+    // CREATE_BENCHMARK(custom_int2, custom_longlong_double)
+    // CREATE_BENCHMARK(rocprim::int128_t, rocprim::int128_t)
+    // CREATE_BENCHMARK(rocprim::uint128_t, rocprim::uint128_t)
 
     executor.run();
 }
