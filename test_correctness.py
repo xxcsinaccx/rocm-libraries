@@ -1,7 +1,7 @@
 import subprocess
 
 commands = [
-    "ROCM_PATH=/opt/rocm CXX=hipcc cmake -DBUILD_BENCHMARK=ON -DAMDGPU_TARGETS=gfx942 ../.",
+    "ROCM_PATH=/opt/rocm CXX=hipcc cmake -DBUILD_BENCHMARK=ON -DBUILD_TEST=ON -DAMDGPU_TARGETS=gfx942 ../.",
     "make -j benchmark_device_merge_sort",
     "make install",
     "./test/rocprim/test_device_merge_sort"
