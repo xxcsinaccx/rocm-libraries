@@ -1,9 +1,8 @@
 import subprocess
-
+result = subprocess.run("mkdir -p /rocm-libraries/projects/rocprim/build", shell=True)
 commands = [
     "ROCM_PATH=/opt/rocm CXX=hipcc cmake -DBUILD_BENCHMARK=ON -DBUILD_TEST=ON -DAMDGPU_TARGETS=gfx942 ../.",
     "make -j benchmark_device_merge_sort",
-    "make install",
     "./benchmark/benchmark_device_merge_sort --trials 20 --size 67108864"
 ]
 workdir = "/rocm-libraries/projects/rocprim/build"
