@@ -3,7 +3,7 @@ import subprocess
 commands = [
     "ROCM_PATH=/opt/rocm CXX=hipcc cmake -DBUILD_BENCHMARK=ON -DBUILD_TEST=ON -DAMDGPU_TARGETS=gfx942 ../.",
     "make -j",
-    "HIP_VISIBLE_DEVICES=7 ./test/rocprim/test_warp_reduce"
+    "HIP_VISIBLE_DEVICES=7 ./test/rocprim/test_device_segmented_reduce"
 ]
 workdir = "/rocm-libraries/projects/rocprim/build"
 for cmd in commands:

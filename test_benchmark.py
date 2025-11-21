@@ -3,7 +3,7 @@ result = subprocess.run("mkdir -p /rocm-libraries/projects/rocprim/build", shell
 commands = [
     "ROCM_PATH=/opt/rocm CXX=hipcc cmake -DBUILD_BENCHMARK=ON -DBUILD_TEST=ON -DAMDGPU_TARGETS=gfx942 ../.",
     "make -j",
-    "HIP_VISIBLE_DEVICES=7 ./benchmark/benchmark_warp_reduce --trials 20"
+    "HIP_VISIBLE_DEVICES=7 ./benchmark/benchmark_device_segmented_reduce --trials 20"
 ]
 workdir = "/rocm-libraries/projects/rocprim/build"
 for cmd in commands:
